@@ -58,13 +58,6 @@ $("body").keypress(function() {
   }
 });
 
-$("body").click(function() {
-  if (!started) {
-    nextSequence();
-    $("#level-title").text("Level " + level)
-    started = true;
-  }
-});
 
 function nextSequence() {
   userClickedPattern = [];
