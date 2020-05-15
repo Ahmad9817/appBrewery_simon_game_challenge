@@ -16,27 +16,7 @@ $(".btn").click(function () {
   checkAnswer(userClickedPattern.length - 1)
 })
 
-function checkAnswer(currentLevel) {
 
-  if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
-
-    if (userClickedPattern.length === gamePattern.length) {
-      setTimeout(function () {
-        nextSequence();
-      }, 1000);
-    }
-
-  }
-
-  else {
-    var audio = new Audio("sounds/wrong.mp3");
-    audio.play();
-    $("body").addClass("game-over");
-    setTimeout(function () {$("body").removeClass("game-over")}, 200)
-    $("#level-title").text("Game Over, Press Any Key to Restart");
-    startOver();
-  }
-}
 
 // Adding Click Animation to the button
 
@@ -80,8 +60,31 @@ function playSound(name) {
   audio.play();
 }
 
+function checkAnswer(currentLevel) {
+
+  if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
+
+    if (userClickedPattern.length === gamePattern.length) {
+      setTimeout(function () {
+        nextSequence();
+      }, 1000);
+    }
+
+  }
+
+  else {
+    var audio = new Audio("sounds/wrong.mp3");
+    audio.play();
+    $("body").addClass("game-over");
+    setTimeout(function () {$("body").removeClass("game-over")}, 200)
+    $("#level-title").text("Game Over, Press Any Key to Restart");
+    startOver();
+  }
+}
+
 function startOver() {
   level = 0;
   started = false;
   gamePattern = [];
 }
+
